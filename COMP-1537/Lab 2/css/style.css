@@ -1,0 +1,30 @@
+body {
+    background-color: whitesmoke;
+}
+
+.blue-header {
+    color: whitesmoke;
+    background-color: teal;
+}
+
+.list-item {
+    background-color: khaki;
+}
+
+.table-header {
+    background-color: hotpink;
+}
+
+.black-table-item {
+    color: whitesmoke;
+    background-color: black;
+}
+
+.gray-table-item {
+    color: whitesmoke;
+    background-color: grey;
+}
+
+#button-submit {
+    background-color: indianred;
+}

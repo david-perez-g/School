@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+main > * {
+  float: left;
+  width: 24%;
+  height: 98vh;
+}
+main aside {
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+main aside img,
+section img {
+  border-radius: 50%;
+}
+main section {
+  width: 49.5%;
+  padding: 1%;
+}
+
+/* ----------- Add your styles below ---------- */
+
+.message {
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.message > * {
+  display: inline;
+}
+.message > img {
+  width: 9%;
+  border-radius: 50%;
+}
+
+.message > p {
+  margin: 0 0.5vw;
+}
+
+.message > button {
+  border: none;
+  background-color: red;
+  border-radius: 50%;
+  padding: 0.7rem 1rem;
+}
+
+.right-message {
+  text-align: right;
+}

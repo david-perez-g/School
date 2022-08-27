@@ -1,0 +1,1 @@
+print("Roses are red\nViolets are blue\nSugar is sweet\nBut i have commitment issues\nSo I rather just be friends\nAt this point in our relationship")

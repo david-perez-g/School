@@ -1,0 +1,111 @@
+/* styling for index.html */
+
+* {
+    box-sizing: border-box;
+}
+
+#main-card {
+    margin: 4vh auto;
+    border: 1px solid black;
+    height: 35%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-card > h1 {
+    font-size: 3rem;
+}
+
+.add-btn {
+    border: none;
+    background-color: rgb(196, 196, 196);
+}
+
+.add-btn:active {
+    border: 4px solid black;
+    border-radius: 8px;
+}
+
+#add-artist-btn {
+    margin: 4vh 0;
+    font-size: 2rem;
+    width: 8rem;
+    height: 4rem;
+}
+
+#add-artist-form {
+    margin: 2vh auto;
+    width: 70%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-artist-form > * {
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+#add-artist-form > input {
+    border: 1px solid;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    color: gray;
+}
+
+#submit-artist-btn {
+    width: 50%;
+}
+
+#artists {
+    margin: 2vh auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-card {
+    border: 1px solid;
+    height: 8rem;
+    display: flex;
+}
+
+.artist-card:hover {
+    background-color: rgb(172, 172, 172);
+}
+
+.artist-picture-container {
+    width: 15%;
+    display: flex;
+}
+
+.artist-picture {
+    width: 100%;
+    margin: 1rem;
+}
+
+.artist-information {
+    margin: 1rem;
+}
+
+.artist-information > * {
+    display: block;
+}
+
+.artist-name {
+    font-size: 2rem;
+}
+
+.artist-description {
+    font-size: 1.2rem;
+}
+
+
+
+

@@ -1,0 +1,28 @@
+body {
+    background-color:#678bb3; 
+    padding:0;
+    margin:0;
+}
+
+/*------ Add you code below  -----*/
+
+#cloud1 {
+    position: relative;
+    top: 150px;
+    animation-name: move_cloud;
+    animation-iteration-count: infinite;
+    animation-duration: 15s;
+}
+
+#cloud2 {
+    position: relative;
+    top: 350px;
+    animation: move_cloud;
+    animation-iteration-count: infinite;
+    animation-duration: 13s;
+}
+
+@keyframes move_cloud {
+    0% { left: 0px; }
+    100% { left: 1940px; }
+}

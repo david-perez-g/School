@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Artist directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <div id="main-card">
+      <h1>Artists Directory</h1>
+      <button type="button" class="add-btn" id="add-artist-btn">Add</button>
+    </div>
+
+    <form id="add-artist-form">
+      <input
+        type="text"
+        name="artist-name"
+        placeholder="Artist Name"
+        id="artist-name-input"
+      />
+      <input
+        type="text"
+        name="about-artist"
+        placeholder="About Artist"
+        id="about-artist-input"
+      />
+      <input
+        type="text"
+        name="artist-number"
+        placeholder="Artist Number (1-99)"
+        id="artist-number-input"
+      />
+      <button type="button" class="add-btn" id="submit-artist-btn">Add</button>
+    </form>
+
+    <section id="artists"></section>
+
+    <script type="module" src="./src/artist_data.mjs"></script>
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>

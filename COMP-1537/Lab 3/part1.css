@@ -1,0 +1,35 @@
+h2+p {
+    background-color: #7F7700;
+    color: white;
+}
+
+a {
+    color: teal;
+}
+
+a:visited {
+    color: white;
+}
+
+div>ul {
+    background-color: #BFB300;
+}
+
+tr:nth-child(2n+1) {
+    background-color: rgb(70, 70, 220);
+}
+
+tr:nth-child(2n) {
+    background-color: orange;
+}
+
+
+/* student with highest mark */
+
+tr:nth-child(5) {
+    background-color: gold;
+}
+
+li:hover {
+    background-color: gray;
+}

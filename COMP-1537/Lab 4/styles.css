@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  transition: opacity 0.15s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:active {
+  opacity: 0.75;
+}
+
+/* Header styles */
+
+header {
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  background-color: #2d3154;
+  display: flex;
+  align-items: center;
+}
+
+#header-traveria-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  padding-left: 1rem;
+  flex: 1;
+}
+
+#traveria-navigation-links > ul {
+  display: flex;
+  justify-content: right;
+  flex: 1;
+  list-style: none;
+}
+
+#traveria-navigation-links a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+#traveria-navigation-links a:hover {
+  text-decoration: underline;
+}
+
+#header-account-buttons {
+  display: flex;
+  justify-content: right;
+  margin-right: 1em;
+}
+
+#login-btn,
+#create-account-btn {
+  color: white;
+  border-width: 1px;
+  border-radius: 3px;
+  padding: 8px 11px;
+}
+
+#login-btn {
+  background-color: #2d3154;
+  margin-right: 6px;
+  border-color: white;
+  border-style: solid;
+}
+
+#create-account-btn {
+  background-color: rgba(107, 105, 135, 0.7);
+  border: none;
+}
+
+/* Main styles */
+
+main {
+  margin: 4.5rem 0;
+}
+
+.products-showcasing {
+  display: flex;
+  margin-bottom: 2vh;
+}
+
+.product-advertisement {
+  margin-right: 1vw;
+  background-color: #faeda5;
+  flex: 1;
+}
+
+.product-advertisement > * {
+  margin: 0.5vh 1.5vw;
+}
+.product-advertisement > h2 {
+  font-size: 1.5rem;
+}
+
+.product-advertisement > h1 {
+  font-size: 3rem;
+}
+
+#get-a-demo-btn {
+  margin-bottom: 2vh;
+  background-color: #1a66ff;
+  padding: 0.8rem 1rem;
+  color: white;
+  border: none;
+}
+
+.product {
+  display: flex;
+  flex: 1;
+}
+
+.product-picture {
+  flex: 0.5;
+  background-color: #faf8d9;
+  padding: 0 1vw;
+  margin-right: 1rem;
+}
+
+.product-picture > img {
+  width: 100%;
+}
+
+.product-info {
+  flex: 1;
+  margin-right: 1vw;
+}
+
+.product-rating {
+  margin: 2vh 0;
+  display: flex;
+  align-items: center;
+}
+
+.stars-rating {
+  margin-right: 1vw;
+}
+
+.stars-rating > img {
+  width: 1.5rem;
+}
+
+.number-of-reviews {
+  text-align: left;
+  flex: 1;
+  font-size: 1.3rem;
+}
+
+.product-name {
+  font-size: 2rem;
+  margin: 1vh 0;
+}
+
+.product-description {
+  font-size: 1.1rem;
+}
+
+#add-to-cart-btn {
+  margin: 2vh 0;
+  padding: 1.5vh 1.5vw;
+  border: none;
+  background-color: #acacbf;
+}
+
+/* Customers reviews styles */
+
+.reviews-container {
+  background-color: #f5f5f5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1vw;
+  text-align: center;
+}
+
+article {
+  margin: 3vh 2vw;
+}
+
+.customer-info {
+  margin-bottom: 1.6vh;
+}
+
+.customer-picture {
+  width: 35%;
+  border-radius: 100%;
+}
+
+.customer-name {
+  margin-top: 0.3vh;
+  color: #acacbf;
+  font-size: 1.1rem;
+}
+
+.customer-review {
+  margin-bottom: 2px;
+  line-height: 20px;
+}
+
+/* Footer styles */
+
+footer {
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+  bottom: 0;
+  background-color: #2d3154;
+  display: flex;
+  align-items: center;
+}
+
+.footer-navigation-links {
+  width: 100%;
+}
+
+.footer-navigation-links > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.footer-navigation-links a {
+  color: white;
+  text-decoration: none;
+}
