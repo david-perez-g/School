@@ -29,4 +29,5 @@ void printTokens(char *inputString)
 int main(void)
 {
     printTokens("  Hello  this  is a test  ");
+    return 0;
 }
