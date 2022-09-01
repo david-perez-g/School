@@ -38,7 +38,7 @@ void findMinDistance(char *inputString)
     // no repetitions found
     if (minDistance == MAX_UNSIGNED_INT)
     {
-        printf("No repetitions found\n");
+        printf("No repeats found!\n");
         return;
     }
 
@@ -48,4 +48,5 @@ void findMinDistance(char *inputString)
 int main(void)
 {
     findMinDistance("a abb");
+    return 0;
 }
