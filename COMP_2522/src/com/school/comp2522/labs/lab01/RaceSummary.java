@@ -1,20 +1,36 @@
 package com.school.comp2522.labs.lab01;
 
 /**
- * @param clockTicks duration of the race in ticks.
- * @param result     race result, either the tortoise, the hare or a tie.
  * @author david-perez-g
- * @version 1.0
+ * @version 2.0
  */
-public record RaceSummary(int clockTicks, RaceResult result) {
+public class RaceSummary {
+    private final int clockTicks;
+    private final RaceResult result;
+
+    public RaceSummary(int clockTicks, final RaceResult result) {
+        this.clockTicks = clockTicks;
+        this.result = result;
+    }
+    public int getClockTicks() {
+        return clockTicks;
+    }
+
+    public RaceResult getResult() {
+        return result;
+    }
+
     @Override
     public String toString() {
-        String resultString = null;
+        String resultString;
+        final RaceResult result = getResult();
 
-        switch (result) {
-            case TIE -> resultString = "tie";
-            case TORTOISE -> resultString = "tortoise wins";
-            case HARE -> resultString = "hare wins";
+        if (result.equals(RaceResult.TIE)) {
+            resultString = "tie";
+        } else if (result.equals(RaceResult.HARE)) {
+            resultString = "hare";
+        } else {
+            resultString = "tortoise";
         }
 
         return String.format(

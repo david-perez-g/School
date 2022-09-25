@@ -1,9 +1,14 @@
 package com.school.comp2522.labs.lab01;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
+/**
+ * @author david-perez-g
+ * @version 2.0
+ */
 public class Driver {
     private static RaceSummary simulateRace(int raceLength) {
         final Hare hare = new Hare();
@@ -22,26 +27,29 @@ public class Driver {
         return races;
     }
 
-    private static String makeRacesSummary(List<RaceSummary> races, int raceLength) {
+    private static String makeRacesSummary(final Collection<RaceSummary> races, int raceLength) {
         int numberOfHareWins = 0;
         int numberOfTortoiseWins = 0;
         int numberOfTies = 0;
+
         for (RaceSummary race : races) {
-            switch (race.result()) {
-                case TIE -> numberOfTies++;
-                case TORTOISE -> numberOfTortoiseWins++;
-                case HARE -> numberOfHareWins++;
+            final RaceResult result = race.getResult();
+
+            if (result.equals(RaceResult.TIE)) {
+                numberOfTies++;
+            } else if (result.equals(RaceResult.HARE)) {
+                numberOfHareWins++;
+            } else {
+                numberOfTortoiseWins++;
             }
         }
-        return String.format("""
-                %d race(s) with a length of %d were done
-                                
-                The hare won: %d time(s),
-                                
-                The tortoise won: %d time(s),
-                                
-                Both tied: %d time(s)
-                """, races.size(), raceLength, numberOfHareWins, numberOfTortoiseWins, numberOfTies);
+
+        return String.format("" +
+                "%d race(s) with a length of %d were done\n" +
+                "The hare won: %d time(s),\n" +
+                "The tortoise won: %d time(s),\n" +
+                "Both tied: %d time(s)",
+                races.size(), raceLength, numberOfHareWins, numberOfTortoiseWins, numberOfTies);
     }
 
     public static void main(String[] args) {
@@ -50,7 +58,7 @@ public class Driver {
 
         // example race
         final RaceSummary summary = simulateRace(RACE_LENGTH);
-        System.out.println(summary);
+        System.out.println(summary + "\n");
 
         final List<RaceSummary> races = simulateRaces(NUMBER_OF_RACES, RACE_LENGTH);
         final String racesSummary = makeRacesSummary(races, RACE_LENGTH);
