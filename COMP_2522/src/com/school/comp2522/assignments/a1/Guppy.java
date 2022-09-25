@@ -1,9 +1,11 @@
 package com.school.comp2522.assignments.a1;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
+/**
+ * @author david-perez-g
+ * @version 2.0
+ */
 public class Guppy {
     // Static variables
     public final static int YOUNG_FISH_AGE_IN_WEEKS = 10;
@@ -41,7 +43,7 @@ public class Guppy {
         this.identificationNumber = numberOfGuppiesBorn;
     }
 
-    public Guppy(final @NotNull String genus, final @NotNull String species, int ageInWeeks, boolean isFemale, int generationNumber, double healthCoefficient) {
+    public Guppy(final String genus, final String species, int ageInWeeks, boolean isFemale, int generationNumber, double healthCoefficient) {
         this.genus = capitalize(genus);
         this.species = species.toLowerCase();
         this.isFemale = isFemale;
@@ -63,7 +65,6 @@ public class Guppy {
         numberOfGuppiesBorn = getNumberOfGuppiesBorn() + 1;
     }
 
-    // TODO test
     private static String capitalize(final String string) {
         String lowerCased = string.toLowerCase();
         return Character.toUpperCase(lowerCased.charAt(0)) + lowerCased.substring(1);
