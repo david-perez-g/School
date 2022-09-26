@@ -56,7 +56,6 @@ public class Mathematics {
         return number;
     }
 
-    //todo
     public double convertFeetToKilometres(double foots) {
         return foots / 3280.8;
     }
