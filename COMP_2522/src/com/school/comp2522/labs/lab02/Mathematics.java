@@ -12,34 +12,34 @@ public class Mathematics {
     public final static double PI = 3.14159;
     public final static double ONE_FOOT_TO_KILOMETRE_RATIO = 0.0003048;
 
-    public double getCircleArea(double radius) {
+    public static double getCircleArea(double radius) {
         return PI * radius * radius;
     }
 
-    public double getSquareArea(double sideSize) {
+    public static double getSquareArea(double sideSize) {
         return sideSize * sideSize;
     }
 
-    public double add(double x, double y) {
+    public static double add(double x, double y) {
         return x + y;
     }
 
-    public double multiply(double x, double y) {
+    public static double multiply(double x, double y) {
         return x * y;
     }
 
-    public double divide(double x, double y) {
+    public static double divide(double x, double y) {
         if (y == 0) {
             return y;
         }
         return x / y;
     }
 
-    public double subtract(double x, double y) {
+    public static double subtract(double x, double y) {
         return x - y;
     }
 
-    public int absolute(int value) {
+    public static int absolute(int value) {
         if (value >= 0) {
             return value;
         }
@@ -47,7 +47,7 @@ public class Mathematics {
         return value * -1;
     }
 
-    private int getRandomNumberBetween(int min, int max) {
+    public static int getRandomNumberBetween(int min, int max) {
         if (max <= min) {
             throw new IllegalArgumentException("max must be greater than min");
         }
@@ -59,7 +59,7 @@ public class Mathematics {
 
         return zeroUntilMax;
     }
-    public int getRandomNumberBetweenTenAndTwentyButNotFifteen() {
+    public static int getRandomNumberBetweenTenAndTwentyButNotFifteen() {
         int number = getRandomNumberBetween(10, 20);
 
         while (number == 15) {
@@ -69,15 +69,15 @@ public class Mathematics {
         return number;
     }
 
-    public double convertFeetToKilometres(double foots) {
+    public static double convertFeetToKilometres(double foots) {
         return foots / 3280.8;
     }
 
-    public boolean isPositive(int number) {
+    public static boolean isPositive(int number) {
         return number > 0;
     }
 
-    public boolean isEven(int number) {
+    public static boolean isEven(int number) {
         return number % 2 == 0;
     }
 
@@ -95,7 +95,7 @@ public class Mathematics {
      *
      * @throws IllegalArgumentException if `bound` is not divisible by `divisableBy`.
      */
-    public int sumOfProducts(int bound, int divisableBy) {
+    public static int sumOfProducts(int bound, int divisableBy) {
         if (divisableBy <= 0) {
             throw new IllegalArgumentException("divisableBy must be greater than 0");
         }
@@ -123,14 +123,14 @@ public class Mathematics {
          */
         return multiplyFinalResultBy * (( bound * ( (bound / divisableBy) + 1 ) ) / 2);
     }
-    public int sumOfInts(int number) {
+    public static int sumOfInts(int number) {
         if (number <= 0) {
             return 0;
         }
         return sumOfProducts(number, 1);
     }
 
-    public int sumOfEvens(int number) {
+    public static int sumOfEvens(int number) {
         return sumOfProducts(number, 2);
     }
 }

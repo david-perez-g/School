@@ -16,11 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MathematicsTest {
 
     /**
-     * The Mathematics object to test.
-     */
-    private final Mathematics math = new Mathematics();
-
-    /**
      * Test method for the value of PI.
      */
     @Test
@@ -41,7 +36,7 @@ public class MathematicsTest {
      */
     @Test
     public void testGetCircleArea1() {
-        double area = math.getCircleArea(1.0);
+        double area = Mathematics.getCircleArea(1.0);
         assertEquals(3.14159, area, 0.00001);
     }
 
@@ -50,7 +45,7 @@ public class MathematicsTest {
      */
     @Test
     public void testGetCircleArea2() {
-        double area = math.getCircleArea(15.0);
+        double area = Mathematics.getCircleArea(15.0);
         assertEquals(706.85775, area, 0.00001);
     }
 
@@ -59,7 +54,7 @@ public class MathematicsTest {
      */
     @Test
     public void testGetSquareArea1() {
-        double area = math.getSquareArea(2.0);
+        double area = Mathematics.getSquareArea(2.0);
         assertEquals(4.0, area, 0.1);
     }
 
@@ -68,7 +63,7 @@ public class MathematicsTest {
      */
     @Test
     public void testGetSquareArea2() {
-        double area = math.getSquareArea(32.0);
+        double area = Mathematics.getSquareArea(32.0);
         assertEquals(1024.0, area, 0.1);
     }
 
@@ -77,7 +72,7 @@ public class MathematicsTest {
      */
     @Test
     public void testAdd1() {
-        double sum = math.add(6.0, 7.0);
+        double sum = Mathematics.add(6.0, 7.0);
         assertEquals(13.0, sum, 0.1);
     }
 
@@ -86,7 +81,7 @@ public class MathematicsTest {
      */
     @Test
     public void testAdd2() {
-        double sum = math.add(-6.0, 6.0);
+        double sum = Mathematics.add(-6.0, 6.0);
         assertEquals(0.0, sum, 0.1);
     }
 
@@ -95,7 +90,7 @@ public class MathematicsTest {
      */
     @Test
     public void testMultiply1() {
-        double product = math.multiply(1.0, 5.0);
+        double product = Mathematics.multiply(1.0, 5.0);
         assertEquals(5.0, product, 0.1);
     }
 
@@ -104,7 +99,7 @@ public class MathematicsTest {
      */
     @Test
     public void testMultiply2() {
-        double product = math.multiply(20.0, 20.0);
+        double product = Mathematics.multiply(20.0, 20.0);
         assertEquals(400.0, product, 0.1);
     }
 
@@ -113,7 +108,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSubtract1() {
-        double difference = math.subtract(0.0, 20.0);
+        double difference = Mathematics.subtract(0.0, 20.0);
         assertEquals(-20.0, difference, 0.1);
     }
 
@@ -122,7 +117,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSubtract2() {
-        double difference = math.subtract(20.0, 20.0);
+        double difference = Mathematics.subtract(20.0, 20.0);
         assertEquals(0.0, difference, 0.1);
     }
 
@@ -131,7 +126,7 @@ public class MathematicsTest {
      */
     @Test
     public void testDivide1() {
-        double division = math.divide(20, 10);
+        double division = Mathematics.divide(20, 10);
         assertEquals(2.0, division, 0.00001);
     }
 
@@ -140,7 +135,7 @@ public class MathematicsTest {
      */
     @Test
     public void testDivide2() {
-        double division = math.divide(20, 0);
+        double division = Mathematics.divide(20, 0);
         assertEquals(0.0, division, 0.00001);
     }
 
@@ -149,7 +144,7 @@ public class MathematicsTest {
      */
     @Test
     public void testAbsolute1() {
-        int abs = math.absolute(1);
+        int abs = Mathematics.absolute(1);
         assertEquals(1, abs);
     }
 
@@ -158,7 +153,7 @@ public class MathematicsTest {
      */
     @Test
     public void testAbsolute2() {
-        int abs = math.absolute(-5000);
+        int abs = Mathematics.absolute(-5000);
         assertEquals(5000, abs);
     }
 
@@ -170,7 +165,7 @@ public class MathematicsTest {
         HashSet<Integer> values = new HashSet<>();
 
         for (int i = 0; i < 10000; i++) {
-            int number = math.getRandomNumberBetweenTenAndTwentyButNotFifteen();
+            int number = Mathematics.getRandomNumberBetweenTenAndTwentyButNotFifteen();
 
             assertFalse(number < 10);
             assertFalse(number > 20);
@@ -186,7 +181,7 @@ public class MathematicsTest {
      */
     @Test
     public void testFootToKM1() {
-        double km = math.convertFeetToKilometres(1.0);
+        double km = Mathematics.convertFeetToKilometres(1.0);
         assertEquals(0.0003048, km, 0.1);
     }
 
@@ -195,7 +190,7 @@ public class MathematicsTest {
      */
     @Test
     public void testFootToKM2() {
-        double km = math.convertFeetToKilometres(892.0);
+        double km = Mathematics.convertFeetToKilometres(892.0);
         assertEquals(0.272186, km, 0.1);
     }
 
@@ -205,7 +200,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfInts() {
-        assertEquals(0, math.sumOfInts(0));
+        assertEquals(0, Mathematics.sumOfInts(0));
     }
 
     /**
@@ -214,7 +209,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfInts2() {
-        assertEquals(55, math.sumOfInts(10));
+        assertEquals(55, Mathematics.sumOfInts(10));
     }
 
     /**
@@ -223,7 +218,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfInts3() {
-        assertEquals(1225, math.sumOfInts(49));
+        assertEquals(1225, Mathematics.sumOfInts(49));
     }
 
     /**
@@ -232,7 +227,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfInts4() {
-        assertEquals(0, math.sumOfInts(-49));
+        assertEquals(0, Mathematics.sumOfInts(-49));
     }
 
     /**
@@ -241,7 +236,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsPositive() {
-        assertTrue(math.isPositive(2));
+        assertTrue(Mathematics.isPositive(2));
     }
 
     /**
@@ -250,7 +245,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsPositive2() {
-        assertFalse(math.isPositive(-2));
+        assertFalse(Mathematics.isPositive(-2));
     }
 
     /**
@@ -259,7 +254,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsPositive3() {
-        assertFalse(math.isPositive(0));
+        assertFalse(Mathematics.isPositive(0));
     }
 
     /**
@@ -268,7 +263,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsEven() {
-        assertTrue(math.isEven(0));
+        assertTrue(Mathematics.isEven(0));
     }
 
     /**
@@ -277,7 +272,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsEven2() {
-        assertFalse(math.isEven(1));
+        assertFalse(Mathematics.isEven(1));
     }
 
     /**
@@ -286,7 +281,7 @@ public class MathematicsTest {
      */
     @Test
     public void testIsEven3() {
-        assertTrue(math.isEven(2));
+        assertTrue(Mathematics.isEven(2));
     }
 
     /**
@@ -295,7 +290,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfEvens() {
-        assertEquals(0, math.sumOfEvens(0));
+        assertEquals(0, Mathematics.sumOfEvens(0));
     }
 
     /**
@@ -304,7 +299,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfEvens2() {
-        assertEquals(30, math.sumOfEvens(10));
+        assertEquals(30, Mathematics.sumOfEvens(10));
     }
 
     /**
@@ -313,7 +308,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfEvens3() {
-        assertEquals(-30, math.sumOfEvens(-10));
+        assertEquals(-30, Mathematics.sumOfEvens(-10));
     }
 
     /**
@@ -323,7 +318,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfProducts() {
-        assertEquals(30, math.sumOfProducts(12, 3)); // 3 + 6 + 9
+        assertEquals(30, Mathematics.sumOfProducts(12, 3)); // 3 + 6 + 9
     }
 
     /**
@@ -333,7 +328,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfProducts2() {
-        assertEquals(-30, math.sumOfProducts(-12, 3)); // -3 + -6 + -9
+        assertEquals(-30, Mathematics.sumOfProducts(-12, 3)); // -3 + -6 + -9
     }
 
     /**
@@ -343,7 +338,7 @@ public class MathematicsTest {
      */
     @Test
     public void testSumOfProducts3() {
-        assertEquals(180, math.sumOfProducts(40, 5)); // 5 + 10 + ... + 40
+        assertEquals(180, Mathematics.sumOfProducts(40, 5)); // 5 + 10 + ... + 40
     }
 
 }
