@@ -48,11 +48,24 @@ public class Mathematics {
     }
 
     private int getRandomNumberBetween(int min, int max) {
-        return (new Random()).nextInt(min, max + 1);
+        if (max <= min) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+        int zeroUntilMax = (new Random()).nextInt(max + 1);
+
+        if (zeroUntilMax <= min) {
+            return min + zeroUntilMax;
+        }
+
+        return zeroUntilMax;
     }
     public int getRandomNumberBetweenTenAndTwentyButNotFifteen() {
-        int number;
-        while ((number = getRandomNumberBetween(10, 20)) == 15);
+        int number = getRandomNumberBetween(10, 20);
+
+        while (number == 15) {
+            number = getRandomNumberBetween(10, 20);
+        }
+
         return number;
     }
 
