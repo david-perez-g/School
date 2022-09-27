@@ -47,25 +47,32 @@ public class Mathematics {
         return value * -1;
     }
 
-    public static int getRandomNumberBetween(int min, int max) {
-        if (max <= min) {
-            throw new IllegalArgumentException("max must be greater than min");
+    public static int getRandomIntBetween(int innerBound, int upperBound) {
+        if (upperBound <= innerBound) {
+            throw new IllegalArgumentException("upperBound must be greater than innerBound");
         }
-        int zeroUntilMax = (new Random()).nextInt(max + 1);
+        int zeroUntilMax = (new Random()).nextInt(upperBound + 1);
 
-        if (zeroUntilMax <= min) {
-            return min + zeroUntilMax;
+        if (zeroUntilMax <= innerBound) {
+            return innerBound + zeroUntilMax;
         }
 
         return zeroUntilMax;
     }
-    public static int getRandomNumberBetweenTenAndTwentyButNotFifteen() {
-        int number = getRandomNumberBetween(10, 20);
 
-        while (number == 15) {
-            number = getRandomNumberBetween(10, 20);
+    public static double getRandomDoubleBetween(double innerBound, double upperBound) {
+        if (upperBound <= innerBound) {
+            throw new IllegalArgumentException("upperBound must be greater than innerBound");
         }
 
+        return innerBound + (upperBound - innerBound) * (new Random()).nextDouble();
+    }
+
+    public static int getRandomNumberBetweenTenAndTwentyButNotFifteen() {
+        int number;
+        do {
+            number = getRandomIntBetween(10, 20);
+        } while (number == 15);
         return number;
     }
 
