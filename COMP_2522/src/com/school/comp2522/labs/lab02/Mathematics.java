@@ -8,7 +8,6 @@ import java.util.Random;
  */
 public class Mathematics {
 
-    public Mathematics() {}
     public final static double PI = 3.14159;
     public final static double ONE_FOOT_TO_KILOMETRE_RATIO = 0.0003048;
 
@@ -47,6 +46,9 @@ public class Mathematics {
         return value * -1;
     }
 
+    /**
+     * Returns a random X number in the range innerBound <= X <= upperBound
+     */
     public static int getRandomIntBetween(int innerBound, int upperBound) {
         if (upperBound <= innerBound) {
             throw new IllegalArgumentException("upperBound must be greater than innerBound");
@@ -60,6 +62,22 @@ public class Mathematics {
         return zeroUntilMax;
     }
 
+    public static int getRandomIntBetween(int innerBound, int upperBound, Random randomInstance) {
+        if (upperBound <= innerBound) {
+            throw new IllegalArgumentException("upperBound must be greater than innerBound");
+        }
+        int zeroUntilMax = randomInstance.nextInt(upperBound + 1);
+
+        if (zeroUntilMax <= innerBound) {
+            return innerBound + zeroUntilMax;
+        }
+
+        return zeroUntilMax;
+    }
+
+    /**
+     * Returns a random X double in the range innerBound <= X < upperBound
+     */
     public static double getRandomDoubleBetween(double innerBound, double upperBound) {
         if (upperBound <= innerBound) {
             throw new IllegalArgumentException("upperBound must be greater than innerBound");
@@ -128,8 +146,9 @@ public class Mathematics {
         ________________________
                   2
          */
-        return multiplyFinalResultBy * (( bound * ( (bound / divisableBy) + 1 ) ) / 2);
+        return multiplyFinalResultBy * ((bound * ((bound / divisableBy) + 1)) / 2);
     }
+
     public static int sumOfInts(int number) {
         if (number <= 0) {
             return 0;
