@@ -63,13 +63,13 @@ class PoolTest {
 
 
     /*
-        addGuppy() checklist:
+        add() checklist:
         * (DONE) adds the guppy
         * (DONE) throws NullPointerException if the guppy is null
      */
 
     @Test
-    @DisplayName("[addGuppy()] Should add the guppy")
+    @DisplayName("[add()] Should add the guppy")
     void shouldAddTheGuppy() {
         int sizeBeforeAdding = pool.getPopulation();
         pool.add(new Guppy());
@@ -79,7 +79,7 @@ class PoolTest {
     }
 
     @Test
-    @DisplayName("[getPopulation()] Should not add a null guppy")
+    @DisplayName("[add()] Should not add a null guppy")
     void shouldNotAddANullGuppy() {
         assertThrows(NullPointerException.class, () -> pool.add(null));
     }
@@ -200,12 +200,12 @@ class PoolTest {
     }
 
     /*
-        removeDeadGuppies() checklist:
+        removeDeadFishes() checklist:
         * (DONE) correctly removes dead guppies from the pool
      */
 
     @Test
-    @DisplayName("[removeDeadGuppies()] Should remove all dead guppies")
+    @DisplayName("[removeDeadFishes()] Should remove all dead guppies")
     void shouldRemoveAllDeadGuppies() {
         Guppy guppyA = new Guppy();
         Guppy guppyB = new Guppy();
@@ -221,7 +221,7 @@ class PoolTest {
     }
 
     @Test
-    @DisplayName("[removeDeadGuppies()] Should not remove any guppy")
+    @DisplayName("[removeDeadFishes()] Should not remove any guppy")
     void shouldNotRemoveAnyGuppy() {
         pool.addAll(createArrayOfGuppies(5));
         assertEquals(0, pool.removeDeadFishes());
@@ -327,14 +327,14 @@ class PoolTest {
     }
 
     /*
-        getWeakestGuppy() checklist:
+        getWeakestFish() checklist:
         * (DONE) returns Optional.empty() if there are no guppies in the list
         * (DONE) returns the weakest guppy inside Optional<Guppy>
         * (DONE) ignores dead guppies.
      */
 
     @Test
-    @DisplayName("[getWeakestGuppy()] Should return Optional.empty")
+    @DisplayName("[getWeakestFish()] Should return Optional.empty")
     void shouldReturnOptionalEmpty() {
         assertFalse(pool.getWeakestFish().isPresent());
     }
