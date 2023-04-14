@@ -72,7 +72,6 @@ int main(int argc, char *argv[])
             continue;
         }
 
-        printf("The name is %s %f\n", s->name, s->gpa);
         students[number_of_students] = s;
         number_of_students++;
     }
