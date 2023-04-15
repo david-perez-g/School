@@ -10,7 +10,6 @@ def compound_interest(a, b, c, d):
     """
 
     final_amount = a * (1 + b / c) ** c * d
-
     return f"Final amount: {final_amount.__round__()} After: {d} years"
 
 

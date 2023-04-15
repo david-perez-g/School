@@ -1,7 +1,8 @@
-Mary    4.0
+Mary      4.0
 Jack      2.45
 John      3.9
 Jane      3.8
-Mike     3.125
-Henry 3.213
-Jim      6
+Mike      3.125
+Henry     3.213
+Penny     5
+Jay       4.5

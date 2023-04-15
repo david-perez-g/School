@@ -4,6 +4,7 @@ __pycache__/
 node_modules/
 sessions/
 out/
-
+.vs/
+build/
 *.iml
 

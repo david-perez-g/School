@@ -13,8 +13,8 @@ typedef struct student
 
 Student *get_student_from_line(char *line)
 {
-    Student *s = (Student *)malloc(sizeof(Student));
-    s->name = strtok(line, " ");
+    Student *s = malloc(sizeof(Student));
+    s->name = strdup(strtok(line, " "));
     s->gpa = atof(strtok(NULL, " "));
     return s;
 }
@@ -44,6 +44,34 @@ void print_students(Student *students[], size_t size)
     }
 }
 
+// Looks for all the students in the file,
+// selects the ones with a gpa higher than 3.9
+// and prints them in a descending order.
+// The students are in the format:
+// <name> <gpa>
+void read_file(FILE *file)
+{
+    Student *students[MAX_NUMBER_OF_STUDENTS];
+    short n = 0; // number of valid students found in the file
+    char *buff = malloc(MAX_LINE_SIZE);
+    while (fgets(buff, MAX_LINE_SIZE, file) != NULL &&
+           n < MAX_NUMBER_OF_STUDENTS)
+    {
+        Student *s = get_student_from_line(buff);
+        if (s->gpa <= 3.9)
+        {
+            continue;
+        }
+
+        students[n] = s;
+        n++;
+    }
+
+    sort_students(students, n);
+    print_students(students, n);
+    free(buff);
+}
+
 int main(int argc, char *argv[])
 {
     if (argc < 2)
@@ -61,25 +89,8 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    Student *students[MAX_NUMBER_OF_STUDENTS];
-    short number_of_students = 0;
-    char *buff = malloc(MAX_LINE_SIZE);
-    while (fgets(buff, MAX_LINE_SIZE, file) != NULL && number_of_students < MAX_NUMBER_OF_STUDENTS)
-    {
-        Student *s = get_student_from_line(buff);
-        if (s->gpa < 3.9)
-        {
-            continue;
-        }
-
-        students[number_of_students] = s;
-        number_of_students++;
-    }
-
+    read_file(file);
     fclose(file);
-    sort_students(students, number_of_students);
-    print_students(students, number_of_students);
-    free(buff);
 
     return EXIT_SUCCESS;
 }
