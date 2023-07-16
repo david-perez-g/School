@@ -18,6 +18,16 @@ public class ArraySetTests {
     }
 
     @Test
+    public void testResize() {
+        ArraySet<Integer> set = new ArraySet<>(2);
+        assertTrue(set.add(1));
+        assertTrue(set.add(2));
+        assertEquals(2, set.size());
+        assertTrue(set.add(3));
+        assertEquals(3, set.size());
+    }
+
+    @Test
     public void testRemove() {
         ArraySet<Integer> set = new ArraySet<>();
         set.add(1);
