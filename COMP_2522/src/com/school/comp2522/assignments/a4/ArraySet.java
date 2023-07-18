@@ -19,7 +19,7 @@ public class ArraySet<E> implements Collection<E> {
         }
     }
 
-    private static final double GROWTH_RATE = 1.5;
+    private static final double GROWTH_RATE = 2;
     private static final int DEFAULT_SIZE = 10;
 
     private Object[] set;
@@ -37,6 +37,10 @@ public class ArraySet<E> implements Collection<E> {
         set = new Object[size];
     }
 
+    /**
+     * Complexity: O(2n)
+     * In the worst case the array would need to be resized.
+     */
     @Override
     public boolean add(E item) throws NullPointerException {
         if (contains(item)) {
@@ -55,6 +59,9 @@ public class ArraySet<E> implements Collection<E> {
         return append(item);
     }
 
+    /**
+     * Complexity: O(1)
+     */
     private boolean append(E item) {
         try {
             set[++lastItemIndex] = item;
@@ -66,15 +73,26 @@ public class ArraySet<E> implements Collection<E> {
         return true;
     }
 
+
+    /**
+     * Complexity: O(1)
+     */
     private boolean isFull() {
         return set.length == size();
     }
 
+
+    /**
+     * Complexity: O(1)
+     */
     @Override
     public int size() {
         return lastItemIndex + 1;
     }
 
+    /**
+     * Complexity: O(n)
+     */
     private void resize() {
         final int newSize = (int) (size() * GROWTH_RATE);
         Object[] newSet = new Object[newSize];
@@ -85,6 +103,9 @@ public class ArraySet<E> implements Collection<E> {
         set = newSet;
     }
 
+    /**
+     * Complexity: O(n)
+     */
     @Override
     public boolean contains(Object o) {
         if (o == null) {
@@ -100,6 +121,9 @@ public class ArraySet<E> implements Collection<E> {
         return false;
     }
 
+    /**
+     * Complexity: O(n)
+     */
     @Override
     public boolean remove(Object o) {
         if (o == null) {
@@ -119,6 +143,9 @@ public class ArraySet<E> implements Collection<E> {
         return false;
     }
 
+    /**
+     * Complexity: O(n)
+     */
     @Override
     public Object[] toArray() {
         final Object[] copy = new Object[size()];
@@ -126,12 +153,12 @@ public class ArraySet<E> implements Collection<E> {
         return copy;
     }
 
+    /**
+     * Complexity: O(1)
+     */
     @Override
     public void clear() {
-        for (int i = 0; i < size(); i++) {
-            set[i] = null;
-        }
-
+        set = new Object[DEFAULT_SIZE];
         lastItemIndex = -1;
     }
 
@@ -140,11 +167,17 @@ public class ArraySet<E> implements Collection<E> {
         return new SetIterator<>();
     }
 
+    /**
+     * Complexity: O(1)
+     */
     @Override
     public boolean isEmpty() {
         return size() == 0;
     }
 
+    /**
+     * Complexity: O(a)
+     */
     @Override
     public <T> T[] toArray(T[] a) {
         if (a.length < size()) {
@@ -155,6 +188,9 @@ public class ArraySet<E> implements Collection<E> {
         return a;
     }
 
+    /**
+     * Complexity: O(c * n)
+     */
     @Override
     public boolean containsAll(Collection<?> c) {
         for (Object item : c) {
@@ -166,6 +202,9 @@ public class ArraySet<E> implements Collection<E> {
         return true;
     }
 
+    /**
+     * Complexity: O(c * n)
+     */
     @Override
     public boolean addAll(Collection<? extends E> c) {
         for (E item : c) {
@@ -177,6 +216,9 @@ public class ArraySet<E> implements Collection<E> {
         return true;
     }
 
+    /**
+     * Complexity: O(c * n)
+     */
     @Override
     public boolean removeAll(Collection<?> c) {
         for (Object item : c) {
@@ -188,6 +230,9 @@ public class ArraySet<E> implements Collection<E> {
         return true;
     }
 
+    /**
+     * Complexity: O(c * n)
+     */
     @Override
     public boolean retainAll(Collection<?> c) {
         boolean changed = false;
