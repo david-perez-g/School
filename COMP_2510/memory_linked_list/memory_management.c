@@ -12,22 +12,22 @@
 typedef unsigned int uint;
 
 /**
- * Information about a memory of memory within a memory_block.
+ * Information about a memory chunk within a memory_block.
 */
 typedef struct memory_chunk_t {
     /**
-     * The ID of the process that's currently using this memory memory.
-     * If there's no process using this memory, it will be UNUSED_CHUNK instead.
+     * The ID of the process that's currently using this chunk.
+     * If there's no process using this chunk, it will have UNUSED_CHUNK instead.
     */
     uint process_id;
     
     /**
-     * Starting index in memory of the memory.
+     * Starting index in memory of the chunk.
     */
     uint base;
 
     /**
-     * Size of the memory in bytes.
+     * Size of the chunk in bytes.
     */
     uint limit; 
 
@@ -47,9 +47,6 @@ memory_chunk_t* create_memory_chunk(uint base, uint limit, memory_chunk_t* next,
     return chunk;
 }
 
-/**
- * 
-*/
 typedef struct memory_t {
     /**
      * Total size in bytes of the memory.
@@ -82,14 +79,14 @@ typedef struct memory_t {
 } memory_t;
 
 memory_t* create_memory(uint size) {
-    memory_chunk_t* initial = create_memory_chunk(
+    memory_chunk_t* initial_chunk = create_memory_chunk(
             0, size, NULL, UNUSED_CHUNK
         );
     memory_t* memory = (memory_t*)malloc(sizeof(memory_t));
     memory->total_bytes = size;
     memory->available_bytes = size;
-    memory->start = initial;
-    memory->unused = initial;
+    memory->start = initial_chunk;
+    memory->unused = initial_chunk;
     memory->last_added_process_id = 0;
     return memory;
 }
