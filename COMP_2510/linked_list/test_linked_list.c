@@ -17,47 +17,47 @@ char* int_to_string(void* value) {
 }
 
 void test_create_linked_list() {
-    linked_list_t* list = create_linked_list();
+    linked_list_t* list = create_llist();
     assert(list != NULL);
     assert(list->head == NULL);
     assert(list->tail == NULL);
     assert(list->size == 0);
-    free_linked_list(list);
+    free_llist(list);
 }
 
 void test_append() {
-    linked_list_t* list = create_linked_list();
+    linked_list_t* list = create_llist();
     int* value1 = malloc(sizeof(int));
     *value1 = 1;
-    append(list, value1);
+    llist_append(list, value1);
     assert(list->size == 1);
     assert(*(int*)list->head->value == 1);
     assert(*(int*)list->tail->value == 1);
 
     int* value2 = malloc(sizeof(int));
     *value2 = 2;
-    append(list, value2);
+    llist_append(list, value2);
     assert(list->size == 2);
     assert(*(int*)list->head->value == 1);
     assert(*(int*)list->tail->value == 2);
 
-    free_linked_list(list);
+    free_llist(list);
 }
 
 void test_insert() {
-    linked_list_t* list = create_linked_list();
+    linked_list_t* list = create_llist();
     
     int* value1 = malloc(sizeof(int));
     *value1 = 1;
-    insert(list, value1, 0);
+    llist_insert(list, value1, 0);
 
     int* value2 = malloc(sizeof(int));
     *value2 = 2;
-    insert(list, value2, 0);
+    llist_insert(list, value2, 0);
 
 	int* value3 = malloc(sizeof(int));
 	*value3 = 3;
-	insert(list, value3, 1);
+	llist_insert(list, value3, 1);
 
 	assert(list->size == 3);
 	assert(*(int*)list->head->value == 2);
@@ -65,46 +65,46 @@ void test_insert() {
 	assert(*(int*)list->tail->value == 1);
 
 
-	free_linked_list(list);
+	free_llist(list);
 }
 
 void test_index_of() {
-	linked_list_t* list = create_linked_list();
+	linked_list_t* list = create_llist();
 
 	int* value1 = malloc(sizeof(int));	
 	*value1 = 1;
 
-	append(list, value1);	
+	llist_append(list, value1);	
 
 	int* value2 = malloc(sizeof(int));
 	*value2 = 2;
-	append(list, value2);
+	llist_append(list, value2);
 
 
-	int index = index_of(list, value2, cmp_int);
+	int index = llist_index_of(list, value2, cmp_int);
 	assert(index == 1);
 
-	free_linked_list(list);
+	free_llist(list);
 }
 
 void test_remove() {
-	linked_list_t* list = create_linked_list();
+	linked_list_t* list = create_llist();
 
 	int* value1 = malloc(sizeof(int));
 	*value1 = 1;
-	append(list, value1);
+	llist_append(list, value1);
 
 	int* value2 = malloc(sizeof(int));
 	*value2 = 2;
-	append(list, value2);
+	llist_append(list, value2);
 
-	bool removed = remove_value(list, value2, cmp_int);
+	bool removed = llist_remove(list, value2, cmp_int);
 	assert(removed == true);
 
 	assert(list->size == 1);
 	assert(*(int*)list->head->value == 1);
 
-	free_linked_list(list);
+	free_llist(list);
 }
 
 int main(void) {
@@ -113,9 +113,9 @@ int main(void) {
 	test_append();
 	printf("Passed: append\n");
 	test_index_of();
-	printf("Passed: index_of\n");
+	printf("Passed: llist_index_of\n");
 	test_insert();
-	printf("Passed: insert\n");
+	printf("Passed: llist_insert\n");
 	test_remove();
 	printf("Passed: remove\n");
 	return EXIT_SUCCESS;

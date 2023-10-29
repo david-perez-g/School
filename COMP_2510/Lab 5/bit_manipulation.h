@@ -22,7 +22,7 @@
  */
 long get_mask(u_int8_t bit_pos_from_right)
 {
-    return powl(2, bit_pos_from_right - 1);
+    return ;
 }
 
 /**

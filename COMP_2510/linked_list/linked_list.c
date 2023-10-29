@@ -36,7 +36,6 @@ void free_nodes(node_t* node) {
 		return;
 	}
 
-	free(node->value);
 	free_nodes(node->next);
 	free(node);
 }
@@ -45,7 +44,7 @@ void set_next(node_t* node, node_t* next) {
 	node->next = next;
 }
 
-linked_list_t* create_linked_list() {
+linked_list_t* create_llist() {
 	linked_list_t* list = (linked_list_t*)malloc(sizeof(linked_list_t));
 	
 	if (list == NULL) {
@@ -59,13 +58,13 @@ linked_list_t* create_linked_list() {
 	return list;
 }
 
-void free_linked_list(linked_list_t* list) {
+void free_llist(linked_list_t* list) {
 	// free nodes will recursively delete the other nodes
 	free_nodes(list->head);
 	free(list);
 }
 
-void append(linked_list_t* list, void* value) {
+void llist_append(linked_list_t* list, void* value) {
 	node_t* node = create_node(value);
 	list->size++;
 
@@ -80,7 +79,7 @@ void append(linked_list_t* list, void* value) {
 	list->tail = node;
 }
 
-void insert(linked_list_t* list, void* value, int index) {
+void llist_insert(linked_list_t* list, void* value, int index) {
     if (index < 0 || index > list->size) {
         perror("Index out of bounds\n");
         return;
@@ -115,7 +114,7 @@ void insert(linked_list_t* list, void* value, int index) {
 	}
 }
 
-int index_of(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
+int llist_index_of(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 	node_t* current = list->head;
 	int index = 0;
 
@@ -131,7 +130,7 @@ int index_of(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 	return -1;
 }
 
-bool remove_value(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
+bool llist_remove(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
     node_t* current = list->head;
     node_t* previous = NULL;
 
@@ -150,7 +149,6 @@ bool remove_value(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 				list->tail = list->head;
 			}
 		}
-		free(current->value);
 		free(current);
 		list->size--; 
 		return true;       
@@ -158,7 +156,7 @@ bool remove_value(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 	return false;
 }
 
-void print_linked_list(linked_list_t* list, char* (*to_string)(void*)) {
+void print_llist(linked_list_t* list, char* (*to_string)(void*)) {
     node_t* current = list->head;
 
     while (current != NULL) {
