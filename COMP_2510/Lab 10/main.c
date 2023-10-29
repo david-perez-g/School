@@ -30,7 +30,7 @@ void reverse_llist(linked_list_t* list) {
     }
 }
 
-char* str_to_str(void *value) {
+char* str_to_str(const void *value) {
     int len = strlen(value);
     char *copy = malloc(len + 1);
     if (copy == NULL) {
@@ -45,13 +45,12 @@ bool str_cmp(const void* a, const void* b) {
     return strcmp(a, b) == 0;
 }
 
-int main(void){
+int main(void) {
     linked_list_t* initial_list = create_llist();
     
     llist_append(initial_list, "David");
     llist_append(initial_list, "John");
     llist_append(initial_list, "James");
-    llist_append(initial_list, "Joel");
     llist_append(initial_list, "Merry");
 
     linked_list_t* copy = copy_llist(initial_list);
@@ -71,10 +70,12 @@ int main(void){
 
     reverse_llist(initial_list);
     reverse_llist(copy);
-    reverse_llist(copy);
     printf("\nAfter reversing both lists\n");
     print_llist(initial_list, str_to_str);
     print_llist(copy, str_to_str);
+
+    free_llist(initial_list);
+    free_llist(copy);
 
     return EXIT_SUCCESS;
 }
