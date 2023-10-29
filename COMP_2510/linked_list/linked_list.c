@@ -18,7 +18,7 @@ typedef struct linked_list_t {
 	unsigned int size;
 } linked_list_t;
 
-node_t* create_node(void* value) {
+node_t* create_node(const void* value) {
 	node_t* node = (node_t*)malloc(sizeof(node_t));
 	
 	if (node == NULL) {
@@ -79,7 +79,7 @@ void llist_append(linked_list_t* list, void* value) {
 	list->tail = node;
 }
 
-void llist_insert(linked_list_t* list, void* value, int index) {
+void llist_insert(linked_list_t* list, const void* value, unsigned int index) {
     if (index < 0 || index > list->size) {
         perror("Index out of bounds\n");
         return;
@@ -114,7 +114,7 @@ void llist_insert(linked_list_t* list, void* value, int index) {
 	}
 }
 
-int llist_index_of(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
+int llist_index_of(const linked_list_t* list, const void* value, bool (*cmp)(void*, void*)) {
 	node_t* current = list->head;
 	int index = 0;
 
@@ -130,7 +130,7 @@ int llist_index_of(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) 
 	return -1;
 }
 
-bool llist_remove(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
+bool llist_remove(linked_list_t* list, const void* value, bool (*cmp)(void*, void*)) {
     node_t* current = list->head;
     node_t* previous = NULL;
 
@@ -156,7 +156,7 @@ bool llist_remove(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 	return false;
 }
 
-void print_llist(linked_list_t* list, char* (*to_string)(void*)) {
+void print_llist(const linked_list_t* list, char* (*to_string)(void*)) {
     node_t* current = list->head;
 
     while (current != NULL) {
