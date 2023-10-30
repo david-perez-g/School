@@ -1,10 +1,15 @@
-#include "../data_structures/linked_list/linked_list.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+#include "../../data_structures/linked_list.h"
 
 linked_list_t* copy_llist(const linked_list_t* list) {
-    linked_list_t* new_list = create_llist();
+    linked_list_t* new_list = linked_list_create();
     
     for (node_t* node = list->head; node != NULL; node = node->next) {
-        llist_append(new_list, node->value);
+        linked_list_append(new_list, node->value);
     }
 
     return new_list;
@@ -30,7 +35,7 @@ void reverse_llist(linked_list_t* list) {
     }
 }
 
-char* str_to_str(const void *value) {
+char* str_to_str(void *value) {
     int len = strlen(value);
     char *copy = malloc(len + 1);
     if (copy == NULL) {
@@ -46,36 +51,36 @@ bool str_cmp(const void* a, const void* b) {
 }
 
 int main(void) {
-    linked_list_t* initial_list = create_llist();
+    linked_list_t* initial_list = linked_list_create();
     
-    llist_append(initial_list, "David");
-    llist_append(initial_list, "John");
-    llist_append(initial_list, "James");
-    llist_append(initial_list, "Merry");
+    linked_list_append(initial_list, "David");
+    linked_list_append(initial_list, "John");
+    linked_list_append(initial_list, "James");
+    linked_list_append(initial_list, "Merry");
 
     linked_list_t* copy = copy_llist(initial_list);
     
     printf("Original list: ");
-    print_llist(initial_list, str_to_str);
+    linked_list_print(initial_list, str_to_str);
     printf("Copy: ");
-    print_llist(copy, str_to_str);
+    linked_list_print(copy, str_to_str);
 
     printf("\nAfter removing John from the original\n");
-    llist_remove(initial_list, "John", str_cmp);
+    linked_list_remove(initial_list, "John", str_cmp);
 
     printf("Original: ");
-    print_llist(initial_list, str_to_str);
+    linked_list_print(initial_list, str_to_str);
     printf("Copy: ");
-    print_llist(copy, str_to_str);
+    linked_list_print(copy, str_to_str);
 
     reverse_llist(initial_list);
     reverse_llist(copy);
     printf("\nAfter reversing both lists\n");
-    print_llist(initial_list, str_to_str);
-    print_llist(copy, str_to_str);
+    linked_list_print(initial_list, str_to_str);
+    linked_list_print(copy, str_to_str);
 
-    free_llist(initial_list);
-    free_llist(copy);
+    linked_list_free(initial_list);
+    linked_list_free(copy);
 
     return EXIT_SUCCESS;
 }
