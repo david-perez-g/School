@@ -1,4 +1,4 @@
-#include "../linked_list/linked_list.c"
+#include "../data_structures/linked_list/linked_list.h"
 
 linked_list_t* copy_llist(const linked_list_t* list) {
     linked_list_t* new_list = create_llist();

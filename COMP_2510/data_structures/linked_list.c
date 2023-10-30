@@ -3,22 +3,9 @@
 #include<stdio.h>
 #include<string.h>
 
-#ifndef _LINKED_LIST
-#define _LINKED_LIST
-#endif
+#include "linked_list.h"
 
-typedef struct node_t {
-	void* value;
-	struct node_t* next;
-} node_t;
-
-typedef struct linked_list_t {
-	node_t* head;
-	node_t* tail;
-	unsigned int size;
-} linked_list_t;
-
-node_t* create_node(const void* value) {
+static node_t* create_node(void* value) {
 	node_t* node = (node_t*)malloc(sizeof(node_t));
 	
 	if (node == NULL) {
@@ -31,20 +18,11 @@ node_t* create_node(const void* value) {
 	return node;
 }
 
-void free_nodes(node_t* node) {
-	if (node == NULL) {
-		return;
-	}
-
-	free_nodes(node->next);
-	free(node);
-}
-
-void set_next(node_t* node, node_t* next) {
+static void set_next(node_t* node, node_t* next) {
 	node->next = next;
 }
 
-linked_list_t* create_llist() {
+linked_list_t* linked_list_create(void) {
 	linked_list_t* list = (linked_list_t*)malloc(sizeof(linked_list_t));
 	
 	if (list == NULL) {
@@ -55,16 +33,26 @@ linked_list_t* create_llist() {
 	list->head = NULL;
 	list->tail = NULL;
 	list->size = 0;
+	
 	return list;
 }
 
-void free_llist(linked_list_t* list) {
-	// free nodes will recursively delete the other nodes
+
+static void free_nodes(node_t* node) {
+	if (node == NULL) {
+		return;
+	}
+
+	free_nodes(node->next);
+	free(node);
+}
+
+void linked_list_free(linked_list_t* list) {
 	free_nodes(list->head);
 	free(list);
 }
 
-void llist_append(linked_list_t* list, void* value) {
+void linked_list_append(linked_list_t* list, void* value) {
 	node_t* node = create_node(value);
 	list->size++;
 
@@ -79,7 +67,7 @@ void llist_append(linked_list_t* list, void* value) {
 	list->tail = node;
 }
 
-void llist_insert(linked_list_t* list, const void* value, unsigned int index) {
+void linked_list_insert(linked_list_t* list, void* value, unsigned int index) {
     if (index < 0 || index > list->size) {
         perror("Index out of bounds\n");
         return;
@@ -102,7 +90,7 @@ void llist_insert(linked_list_t* list, const void* value, unsigned int index) {
 
 	node_t* current = list->head;
 
-	for (int i = 0; i < index - 1; i++) {
+	for (unsigned int i = 0; i < index - 1; i++) {
 		current = current->next;
 	}
 
@@ -114,7 +102,7 @@ void llist_insert(linked_list_t* list, const void* value, unsigned int index) {
 	}
 }
 
-int llist_index_of(const linked_list_t* list, const void* value, bool (*cmp)(void*, void*)) {
+unsigned int linked_list_index_of(const linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
 	node_t* current = list->head;
 	int index = 0;
 
@@ -130,7 +118,7 @@ int llist_index_of(const linked_list_t* list, const void* value, bool (*cmp)(voi
 	return -1;
 }
 
-bool llist_remove(linked_list_t* list, const void* value, bool (*cmp)(void*, void*)) {
+bool linked_list_remove(linked_list_t* list, void* value, bool (*cmp)(void*, void*)) {
     node_t* current = list->head;
     node_t* previous = NULL;
 
@@ -153,10 +141,11 @@ bool llist_remove(linked_list_t* list, const void* value, bool (*cmp)(void*, voi
 		list->size--; 
 		return true;       
     }
+
 	return false;
 }
 
-void print_llist(const linked_list_t* list, char* (*to_string)(void*)) {
+void linked_list_print(const linked_list_t* list, char* (*to_string)(void*)) {
     node_t* current = list->head;
 
     while (current != NULL) {
