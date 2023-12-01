@@ -7,18 +7,18 @@
 
 // Tree node
 typedef struct tnode_t {
-	struct tnode_t* left;
-	struct tnode_t* right;
-	void* value;
+    struct tnode_t* left;
+    struct tnode_t* right;
+    void* value;
 } tnode_t;
 
 typedef struct bstree_t {
-	tnode_t* root;
-	bool (*cmp)(void*, void*);
+    tnode_t* root;
+    bool (*cmp)(void*, void*);
 } bstree_t;
 
 typedef struct bst_iterator_t {
-	stack_t* stack;
+    stack_t* stack;
 } bst_iterator_t;
 
 extern bstree_t* bst_create(bool (*cmp)(void*, void*));
