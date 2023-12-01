@@ -50,5 +50,6 @@ void stack_free(stack_t* stack) {
 		prev = node;
 		node = node->next;
 		free(prev);
+		free(prev->value);
 	}
 }
