@@ -19,8 +19,13 @@ add_library(bst STATIC bst.c)
 add_executable(bst_test test_bst.c)
 target_link_libraries(bst_test bst linked_list stack)
 
+add_library(dllist STATIC dllist.c)
+add_executable(dllist_test test_dllist.c)
+target_link_libraries(dllist_test dllist)
+
 include(CTest)
 enable_testing()
 add_test(NAME linked_list_test COMMAND $<TARGET_FILE:linked_list_test>)
 add_test(NAME stack_test COMMAND $<TARGET_FILE:stack_test>)
 add_test(NAME bst_test COMMAND $<TARGET_FILE:bst_test>)
+add_test(NAME dllist_test COMMAND $<TARGET_FILE:dllist_test>)

@@ -3,11 +3,19 @@
 
 #include "bst.h"
 
-bool int_cmp(void* a, void* b) {
+int int_cmp(void* a, void* b) {
     int int_a = *(int*)a;
     int int_b = *(int*)b;
 
-    return int_a >= int_b;
+    if (int_a == int_b) {
+        return 0;
+    }
+
+    if (int_a > int_b) {
+        return 1;
+    }
+
+    return -1;
 }
 
 int main() {
@@ -29,8 +37,7 @@ int main() {
     assert(bst_find(tree, &not_in_tree) == NULL);
 
     printf("All tests passed!\n");
-
-    bst_free(tree);
+    bst_free(tree, false);
 
     return 0;
 }

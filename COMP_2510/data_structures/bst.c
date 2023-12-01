@@ -13,7 +13,7 @@ static tnode_t* create_tnode(void* value, tnode_t* left, tnode_t* right) {
     return node;
 }
 
-bstree_t* bst_create(bool (*cmp)(void*, void*)) {
+bstree_t* bst_create(int (*cmp)(void*, void*)) {
     bstree_t* bst = (bstree_t*)malloc(sizeof(bstree_t));
     bst->root = NULL;
     bst->cmp = cmp;
@@ -38,18 +38,38 @@ void bst_insert(bstree_t* tree, void* value) {
 
     while (current != NULL) {
         parent = current;
-        if (tree->cmp(value, current->value)) {
+
+        // current->value >= value
+        if (tree->cmp(current->value, value) >= 0) {
             current = current->left;
         } else {
             current = current->right;
         }
     }
 
-    if (tree->cmp(value, parent->value)) {
+    if (tree->cmp(parent->value, value) >= 0) {
         parent->left = node;
     } else {
         parent->right = node;
     }
+}
+
+tnode_t* bst_find(const bstree_t* tree, void* value) {
+    tnode_t* node = tree->root;
+
+    while (node != NULL) {
+        int cmp = tree->cmp(node->value, value);
+
+        if (cmp == 0) {
+            return node;
+        } else if (cmp > 0) {
+            node = node->left;
+        } else {
+            node = node->right;
+        }
+    }
+
+    return NULL;
 }
 
 static void free_tnode(tnode_t* node, bool should_free_values) {
