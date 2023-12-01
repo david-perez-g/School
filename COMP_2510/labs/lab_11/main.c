@@ -1,8 +1,19 @@
 #include <stdio.h>
 #include "../../data_structures/bst.h"
 
-bool int_cmp(void *a, void *b) {
-    return *(int *)a >= *(int *)b;
+int int_cmp(void *a, void *b) {
+    int first = *(int *)a;
+    int second = *(int *)b;
+
+    if (first == second) {
+        return 0; 
+    }
+
+    if (first < second) {
+        return -1;
+    }
+
+    return 1;
 }
 
 int main(void){
