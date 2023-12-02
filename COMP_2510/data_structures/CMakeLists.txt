@@ -17,7 +17,7 @@ target_link_libraries(stack_test stack)
 
 add_library(bst STATIC bst.c)
 add_executable(bst_test test_bst.c)
-target_link_libraries(bst_test bst linked_list stack)
+target_link_libraries(bst_test bst linked_list)
 
 add_library(dllist STATIC dllist.c)
 add_executable(dllist_test test_dllist.c)
