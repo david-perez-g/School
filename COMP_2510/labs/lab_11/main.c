@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "../../data_structures/bst.h"
 
 int int_cmp(void *a, void *b) {
