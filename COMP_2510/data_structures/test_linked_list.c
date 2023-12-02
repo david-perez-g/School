@@ -106,6 +106,35 @@ void test_llist_remove() {
 	linked_list_free(list);
 }
 
+void test_llist_pop_front() {
+    // Test 1: Popping from an empty list
+    linked_list_t* list = linked_list_create();
+    node_t* node = linked_list_pop_front(list);
+    assert(node == NULL);
+
+    // Test 2: Popping from a list with one element
+    int value1 = 5;
+    linked_list_append(list, &value1);
+    node = linked_list_pop_front(list);
+    assert(node != NULL);
+    assert(node->value == &value1);
+    assert(list->size == 0);
+
+    // Test 3: Popping from a list with multiple elements
+    int value2 = 10;
+    int value3 = 15;
+    linked_list_append(list, &value1);
+    linked_list_append(list, &value2);
+    linked_list_append(list, &value3);
+    node = linked_list_pop_front(list);
+    assert(node != NULL);
+    assert(node->value == &value1);
+    assert(list->size == 2);
+
+    linked_list_free(list);
+}
+
+
 int main(void) {
 	test_llist_create();
 	printf("Passed: linked_list_create\n");
@@ -117,5 +146,7 @@ int main(void) {
 	printf("Passed: linked_list_insert\n");
 	test_llist_remove();
 	printf("Passed: linked_list_remove\n");
+    test_llist_pop_front();
+	printf("Passed: linked_list_pop_front\n");
 	return EXIT_SUCCESS;
 }
