@@ -6,6 +6,7 @@
 int* alloc_int(int value) {
     int* copy = (int*)malloc(sizeof(int));
     *copy = value;
+    return copy;
 }
 
 int* copy_int(int *item) {
@@ -134,7 +135,7 @@ int main(void){
     append_all(b4, b4_digits, 1);
     
     dllist_t* sum4 = dllist_sum(a4, b4);
-    
+
     printf("Expected output: 1 0 0 0\n");
     printf("Actual output: ");
     print_int_dllist(sum4);
