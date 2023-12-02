@@ -35,6 +35,28 @@ void dllist_append(dllist_t* list, void* value) {
     list->size++;
 }
 
+void dllist_prepend(dllist_t* list, void* value) {
+    dll_node_t* node;
+
+    if (list->size == 0) {
+        node = create_node(value, NULL, NULL);
+        list->size++;
+        list->head = node;
+        list->tail = node;
+        return;
+    }
+
+    node = create_node(value, NULL, list->head);
+    list->head->left = node;
+
+    if (list->size == 1) {
+        list->tail = list->head;
+    }
+
+    list->head = node;
+    list->size++;
+}
+
 void dllist_free(dllist_t* list, bool should_free_values) {
     dll_node_t* node = list->head;
     dll_node_t* prev;

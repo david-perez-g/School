@@ -41,8 +41,29 @@ void test_dllist_append() {
     dllist_free(list, false);
 }
 
+void test_dllist_prepend(void) {
+    dllist_t* list = dllist_create();
+    int value1 = 1;
+    int value2 = 2;
+
+    // Test prepending to an empty list
+    dllist_prepend(list, &value1);
+    assert(list->head->value == &value1);
+    assert(list->tail->value == &value1);
+    assert(list->size == 1);
+
+    // Test prepending to a non-empty list
+    dllist_prepend(list, &value2);
+    assert(list->head->value == &value2);
+    assert(list->tail->value == &value1);
+    assert(list->size == 2);
+
+    dllist_free(list, false);
+}
+
 int main() {
     test_dllist_create();
     test_dllist_append();
+    test_dllist_prepend();
     return 0;
 }

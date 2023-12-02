@@ -19,6 +19,7 @@ typedef struct dllist_t {
 
 extern dllist_t* dllist_create();
 extern void dllist_append(dllist_t* list, void* value);
+extern void dllist_prepend(dllist_t* list, void* value);
 extern void dllist_free(dllist_t* list, bool should_free_values);
 
 #endif
