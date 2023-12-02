@@ -8,7 +8,7 @@ add_library(stack STATIC ../../data_structures/stack.c)
 add_library(linked_list STATIC ../../data_structures/linked_list.c)
 
 add_executable(lab_11 main.c)
-target_link_libraries(lab_11 bst stack linked_list)
+target_link_libraries(lab_11 bst linked_list)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
