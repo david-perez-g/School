@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "bst.h"
-#include "stack.h"
 
 static tnode_t* create_tnode(void* value, tnode_t* left, tnode_t* right) {
     tnode_t* node = (tnode_t*)malloc(sizeof(tnode_t));
@@ -91,19 +90,19 @@ void bst_free(bstree_t* tree, bool should_free_values) {
 }
 
 
-static void construct_inorder_iterator(const tnode_t* node, stack_t* stack) {
+static void construct_inorder_iterator(const tnode_t* node, linked_list_t* list) {
     if (node == NULL) {
         return;
     }
 
-    construct_inorder_iterator(node->left, stack);
-    stack_push(stack, node->value);
-    construct_inorder_iterator(node->right, stack);
+    construct_inorder_iterator(node->left, list);
+    linked_list_append(list, node->value);
+    construct_inorder_iterator(node->right, list);
 }
 
 bst_iterator_t* bst_get_inorder_iterator(const bstree_t* tree) {
-    stack_t* stack = stack_create();
-    construct_inorder_iterator(tree->root, stack);
+    linked_list_t* list = linked_list_create();
+    construct_inorder_iterator(tree->root, list);
     bst_iterator_t* it = (bst_iterator_t*)malloc(sizeof(bst_iterator_t));
 
     if (it == NULL) {
@@ -111,16 +110,16 @@ bst_iterator_t* bst_get_inorder_iterator(const bstree_t* tree) {
         return NULL;
     }
 
-    it->stack = stack;
+    it->list = list;
     return it;
 }
 
 bool bst_iter_has_next(const bst_iterator_t* it) {
-    return it->stack->top != NULL;
+    return it->list->size > 0;
 }
 
 void* bst_iter_next(const bst_iterator_t* it) {
-    node_t* node = stack_pop(it->stack);
+    node_t* node = linked_list_pop_front(it->list);
 
     if (node == NULL) {
         return NULL;
@@ -130,7 +129,7 @@ void* bst_iter_next(const bst_iterator_t* it) {
 }
 
 void bst_free_iterator(bst_iterator_t* it) {
-    node_t* node = it->stack->top;
+    node_t* node = it->list->head;
     node_t* prev;
 
     while (node != NULL) {
@@ -142,6 +141,6 @@ void bst_free_iterator(bst_iterator_t* it) {
         free(prev);
     }
 
-    free(it->stack);
+    free(it->list);
     free(it);
 }

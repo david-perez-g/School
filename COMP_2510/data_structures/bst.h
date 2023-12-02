@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
-#include "stack.h"
+#include "linked_list.h"
 
 // Tree node
 typedef struct tnode_t {
@@ -22,7 +22,7 @@ typedef struct bstree_t {
 } bstree_t;
 
 typedef struct bst_iterator_t {
-    stack_t* stack;
+    linked_list_t* list;
 } bst_iterator_t;
 
 extern bstree_t* bst_create(int (*cmp)(void*, void*));
