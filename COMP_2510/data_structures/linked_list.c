@@ -145,6 +145,29 @@ bool linked_list_remove(linked_list_t* list, void* value, bool (*cmp)(void*, voi
 	return false;
 }
 
+node_t* linked_list_pop_front(linked_list_t* list) {
+    if (list->size <= 0) {
+        return NULL;
+    }
+    node_t* node = list->head;
+
+    if (list->size == 1) {
+        list->head = NULL;
+        list->tail = NULL;
+        list->size--;
+        return node;
+    }
+
+    if (list->size == 2) {
+        list->head = list->tail;
+    } else {
+        list->head = list->head->next;
+    }
+    
+    list->size--;
+    return node;
+}
+
 void linked_list_print(const linked_list_t* list, char* (*to_string)(void*)) {
     node_t* current = list->head;
 

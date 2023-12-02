@@ -18,6 +18,7 @@ extern linked_list_t* linked_list_create(void);
 extern void linked_list_free(linked_list_t* list);
 extern void linked_list_append(linked_list_t* list, void* value);
 extern void linked_list_insert(linked_list_t* list, void* value, unsigned int index);
+extern node_t* linked_list_pop_front(linked_list_t* list);
 extern unsigned int linked_list_index_of(const linked_list_t* list, void* value, bool (*cmp)(void*, void*));
 extern bool linked_list_remove(linked_list_t* list, void* value, bool (*cmp)(void*, void*));
 extern void linked_list_print(const linked_list_t* list, char* (*to_string)(void*));
